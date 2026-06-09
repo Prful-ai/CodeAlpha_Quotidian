@@ -1,0 +1,55 @@
+{
+  "entities": {
+    "Quote": {
+      "title": "Quote",
+      "description": "An individual quote with text and author name.",
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "The exact text of the quote."
+        },
+        "author": {
+          "type": "string",
+          "description": "The author of the quote."
+        }
+      },
+      "required": ["text", "author"]
+    },
+    "SavedQuote": {
+      "title": "SavedQuote",
+      "description": "A bookmarked quotation saved by an authenticated user.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The active quote's ID."
+        },
+        "text": {
+          "type": "string",
+          "description": "The exact text of the quote."
+        },
+        "author": {
+          "type": "string",
+          "description": "The author of the quote."
+        },
+        "savedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp indicating when the quote was bookmarked."
+        }
+      },
+      "required": ["id", "text", "author"]
+    }
+  },
+  "firestore": {
+    "/quotes/{quoteId}": {
+      "schema": "Quote",
+      "description": "A collection containing inspiring tech and life quotes."
+    },
+    "/users/{userId}/savedQuotes/{quoteId}": {
+      "schema": "SavedQuote",
+      "description": "A user's custom journal of bookmarked quotations."
+    }
+  }
+}

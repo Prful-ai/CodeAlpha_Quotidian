@@ -1,0 +1,49 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Global Safety Net: Default Deny All
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper: Validate canonical quotes
+    function isValidQuote(data) {
+      return data.keys().hasAll(['text', 'author']) &&
+             data.keys().size() == 2 &&
+             data.text is string &&
+             data.text.size() > 0 &&
+             data.text.size() <= 1000 &&
+             data.author is string &&
+             data.author.size() > 0 &&
+             data.author.size() <= 100;
+    }
+
+    // Helper: Validate user-saved quote backups
+    function isValidSavedQuote(data) {
+      return data.keys().hasAll(['id', 'text', 'author', 'savedAt']) &&
+             data.keys().size() == 4 &&
+             data.id is string &&
+             data.id.size() > 0 &&
+             data.id.size() <= 128 &&
+             data.text is string &&
+             data.text.size() > 0 &&
+             data.text.size() <= 1000 &&
+             data.author is string &&
+             data.author.size() > 0 &&
+             data.author.size() <= 100;
+    }
+
+    // Quotes collection path
+    match /quotes/{quoteId} {
+      allow read: if true;
+      allow create, update: if isValidQuote(request.resource.data);
+      allow delete: if false;
+    }
+
+    // Private user bookmarks
+    match /users/{userId}/savedQuotes/{quoteId} {
+      allow read, delete: if request.auth != null && request.auth.uid == userId;
+      allow create, update: if request.auth != null && request.auth.uid == userId && isValidSavedQuote(request.resource.data) && request.resource.data.savedAt == request.time;
+    }
+  }
+}

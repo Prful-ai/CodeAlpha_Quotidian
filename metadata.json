@@ -1,0 +1,8 @@
+{
+  "name": "Random Quote Generator",
+  "description": "A highly polished, minimal, and modern application that displays inspiring random quotes fetched from a Firebase Firestore database with elegant transitions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

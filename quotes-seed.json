@@ -1,0 +1,52 @@
+[
+  {
+    "text": "Simplicity is the ultimate sophistication.",
+    "author": "Leonardo da Vinci",
+    "sentiment": "philosophical"
+  },
+  {
+    "text": "Make it simple, but significant.",
+    "author": "Don Draper",
+    "sentiment": "ambitious"
+  },
+  {
+    "text": "Before software can be reusable it first has to be usable.",
+    "author": "Ralph Johnson",
+    "sentiment": "philosophical"
+  },
+  {
+    "text": "The only way to do great work is to love what you do.",
+    "author": "Steve Jobs",
+    "sentiment": "ambitious"
+  },
+  {
+    "text": "Talk is cheap. Show me the code.",
+    "author": "Linus Torvalds",
+    "sentiment": "stoic"
+  },
+  {
+    "text": "Strive not to be a success, but rather to be of value.",
+    "author": "Albert Einstein",
+    "sentiment": "philosophical"
+  },
+  {
+    "text": "The computer was born to solve problems that did not exist before.",
+    "author": "Bill Gates",
+    "sentiment": "serene"
+  },
+  {
+    "text": "Programs must be written for people to read, and only secondarily for machines to execute.",
+    "author": "Harold Abelson",
+    "sentiment": "philosophical"
+  },
+  {
+    "text": "Your mind is for having ideas, not holding them.",
+    "author": "David Allen",
+    "sentiment": "serene"
+  },
+  {
+    "text": "The best way to predict the future is to invent it.",
+    "author": "Alan Kay",
+    "sentiment": "ambitious"
+  }
+]
